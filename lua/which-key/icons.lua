@@ -89,6 +89,7 @@ M.rules = {
   { plugin = "neotest", cat = "filetype", name = "neotest-summary" },
   { plugin = "lazy.nvim", cat = "filetype", name = "lazy" },
   { pattern = "undotree", icon = "󰙅 ", color = "orange" },
+  { pattern = "icon", icon = " ", color = "yellow" },
 }
 
 ---@type wk.IconProvider[]
