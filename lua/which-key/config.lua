@@ -19,6 +19,14 @@ local defaults = {
     -- return mapping.desc and mapping.desc ~= ""
     return true
   end,
+  ---@param filter wk.Filter
+  ---@param node wk.Node
+  ---@param current_node wk.Node?
+  show = function(filter, node, current_node)
+    -- example to not show mappings without a description
+    -- return node.desc and node.desc ~= ""
+    return true
+  end,
   --- You can add any mappings here, or use `require('which-key').add()` later
   ---@type wk.Spec
   spec = {},
@@ -43,7 +51,7 @@ local defaults = {
     -- the presets plugin, adds help for a bunch of default keybindings in Neovim
     -- No actual key bindings are created
     spelling = {
-      trigger = "z=" -- -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+      trigger = "z=", -- -- enabling this will show WhichKey when pressing z= to select spelling suggestions
       enabled = true, -- If this spelling plugin is enabled
       suggestions = 20, -- how many suggestions should be shown in the list?
     },

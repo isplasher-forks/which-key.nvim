@@ -281,16 +281,22 @@ function M.show()
 
   ---@param node wk.Node
   local function filter(node)
+    local r = false
     local l = state.filter["local"] ~= false
     local g = state.filter.global ~= false
     if not g and not l then
       return false
     end
     if g and l then
-      return true
+      r = true
+    else
+      local is_local = node:is_local()
+      r = l and is_local or g and not is_local
     end
-    local is_local = node:is_local()
-    return l and is_local or g and not is_local
+    if r and type(Config.show) == "function" then
+      return Config.show(state.filter, node, state.node)
+    end
+    return r
   end
 
   ---@param node wk.Node
